@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 
      filename : (req,file,cb) => {
 
-      cb(null,file.fieldname + "_" +Date.now +path.extname(file.originalname))
+      cb(null,file.fieldname + "_" +Date.now()+path.extname(file.originalname))
 
      }
 
@@ -50,14 +50,23 @@ app.get("/books", (req, res) => {
       console.log(err);
       return res.json(err);
     }
-    console.log("here",data)
+    // console.log("here",data)
     return res.json(data);
   });
 });
 
-app.post('/upload',upload.single("image"),(req,res)=>{
+app.post('/upload',upload.single('image'),(req,res)=>{
 
   console.log(req.file)
+  const image = req.file.filename;
+  const sql = "Update Books set Image = ?"
+  console.log("file",req.file.filename)
+  db.query(sql,[image], (error,result)=>{
+
+    if(error) return res.json({message : "error occured"});
+    res.json({status : "Success"});
+
+  })
 
 })
 
