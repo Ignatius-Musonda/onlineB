@@ -5,6 +5,13 @@ import cors from "cors";
 import multer from "multer";
 import path from "path";
 
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./Routes/Auth.js";
+import postRoutes from "./Routes/Courses.js";
+import cookieParser from "cookie-parser";
+
+
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -31,6 +38,7 @@ const storage = multer.diskStorage({
 
     
 })
+// const storage = multer.diskStorage()
 
 const upload = multer({
   storage : storage
@@ -58,7 +66,8 @@ app.get("/books", (req, res) => {
 app.post('/upload',upload.single('image'),(req,res)=>{
 
   console.log(req.file)
-  const image = req.file.filename;
+  // const image = req.file.filename;
+  const image = req.file.buffer;
   const sql = "Update Books set Image = ?"
   console.log("file",req.file.filename)
   db.query(sql,[image], (error,result)=>{
