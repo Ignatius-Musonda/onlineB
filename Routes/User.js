@@ -1,8 +1,7 @@
 
 
 import express from "express";
-import {
-  addCourse,
+import {addCourse,
   deleteCourse,
   getCourse,
   getCourses,
