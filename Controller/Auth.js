@@ -20,7 +20,7 @@ export const register = (req, res) => {
         // Hash the password and create a user
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
-        var StudentID = 24120002;
+        var StudentID = 241200335;
 
         const insertQuery = "INSERT INTO student(`StudentID`,`email`,`Gender`,`Date`,`DOB`,`NRC`,`Nationality`,`FName`,`LName`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         const insertUserQuery = "INSERT INTO user(`UserID`,`Date`,`NRC`,`Password`,`Jwt`) VALUES (?, ?, ?, ?, ?)";
@@ -123,25 +123,28 @@ export const register = (req, res) => {
 
 export const login = (req, res) => {
   //CHECK USER
+  console.log("in login",req.body)
 
-  const q = "SELECT * FROM users WHERE username = ?";
+  const q = "SELECT * FROM user WHERE NRC = ?";
 
-  db.query(q, [req.body.username], (err, data) => {
+  db.query(q, [req.body.email], (err, data) => {
     if (err) return res.status(500).json(err);
     if (data.length === 0) return res.status(404).json("User not found!");
 
     //Check password
+    // console.log("data",data)
     const isPasswordCorrect = bcrypt.compareSync(
       req.body.password,
-      data[0].password
+      data[0].Password
     );
+    console.log("geeting here",isPasswordCorrect)
 
     if (!isPasswordCorrect)
       return res.status(400).json("Wrong username or password!");
 
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
     const { password, ...other } = data[0];
-
+    return res.status(400).json("Success!");
     res
       .cookie("access_token", token, {
         httpOnly: true,

@@ -134,3 +134,33 @@ app.listen(8800, () => {
 // });
 
 
+// console {
+//   Fname: 'Chris',
+//   Lname: 'Kunda',
+//   Gender: 'Male',
+//   email: 'b@dd.com',
+//   password: '7985876',
+//   AccNo: '',
+//   Branch: '',
+//   OrgName: '',
+//   Phone: '1364262762572752',
+//   NRC: '5575765763131'
+// }
+// console Chris
+// console 1364262762572752
+// [nodemon] restarting due to changes...
+// [nodemon] starting `node index.js`
+// Connected to backend.
+// console {
+//   Fname: 'Chris',
+//   Lname: 'Kunda',
+//   Gender: 'Male',
+//   email: 'b@dd.om',
+//   password: '7985876433356356334',
+//   AccNo: '',
+//   Branch: '',
+//   OrgName: '',
+//   Phone: '1364262762572752',
+//   NRC: '5575765763131dga'
+// }
+
