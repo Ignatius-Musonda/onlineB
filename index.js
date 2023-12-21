@@ -26,7 +26,7 @@ const db = mysql.createConnection({
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/posts", CourseRoutes);
+app.use("/api/courses", CourseRoutes);
 
 
 

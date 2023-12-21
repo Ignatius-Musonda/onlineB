@@ -3,11 +3,13 @@ import { db } from "../db.js";
 import jwt from "jsonwebtoken";
 
 export const getCourses = (req, res) => {
-  const q = req.query.cat
-    ? "SELECT * FROM posts WHERE cat=?"
-    : "SELECT * FROM posts";
+  const q = "SELECT * FROM course";
+//   const q = req.query.cat
+//     ? "SELECT * FROM course WHERE cat=?"
+//     : "SELECT * FROM course";
 
-  db.query(q, [req.query.cat], (err, data) => {
+  db.query(q, (err, data) => {
+//   db.query(q, [req.query.cat], (err, data) => {
     if (err) return res.status(500).send(err);
 
     return res.status(200).json(data);
