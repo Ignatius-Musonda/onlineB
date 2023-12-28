@@ -148,7 +148,16 @@ export const register = (req, res) => {
                         console.log("ress",data)
                         db.query(insertUserQuery, [nextStudentNumber,...valuesSec], (err, data) => {
                             if (err) return res.status(500).json(err);
-                            return res.status(200).json("User has been created.");
+                            return res.status(200).json(
+                                {"msg" : "User has been created",
+                                "Userdata" : data,
+                                "Applicationdata" : "",
+                                "RegData" : "",
+                                "status" : "Ok"
+                       
+                              }
+                                
+                            );
                         });
                     });
 
@@ -167,7 +176,15 @@ export const register = (req, res) => {
                 
                         db.query(insertUserQuery,[nextStudentNumber,...valuesSec], (err, data) => {
                             if (err) return res.status(500).json(err);
-                            return res.status(200).json("User has been created.");
+                            return res.status(200).json(
+                                {"msg" : "User has been created",
+                                "Userdata" : data,
+                                "Applicationdata" : "",
+                                "RegData" : "",
+                                "status" : "Ok"
+                       
+                              }
+                            );
                         });
                     });
 
