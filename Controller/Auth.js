@@ -30,7 +30,7 @@ export const register = (req, res) => {
         // })
 
         const insertQuery = "INSERT INTO student(`StudentID`,`email`,`Gender`,`Date`,`DOB`,`NRC`,`Nationality`,`FName`,`LName`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        const insertUserQuery = "INSERT INTO user(`UserID`,`Date`,`NRC`,`Password`,`Jwt`,`Email`,`Role`) VALUES (?, ?, ?, ?, ?,?,?)";
+        const insertUserQuery = "INSERT INTO user(`UserID`,`Date`,`NRC`,`Password`,`Jwt`,`Email`,`Role`,`FName`,`LName`) VALUES (?, ?, ?, ?, ?,?,?,?,?)";
         
 
                     // CHECKING FOR NEXT STUDENT NUMBER
@@ -106,7 +106,9 @@ export const register = (req, res) => {
                 hash,
                 "Jwt sample",
                 req.body.email,
-                "Student"
+                "Student",
+                req.body.Fname,
+                req.body.Lname,
             ];
 
             const values = [ 
@@ -233,7 +235,15 @@ export const login = (req, res) => {
     //   .status(200)
     //   .json(other);
 
-    return res.status(200).json("Success!");
+    return res.status(200).json( 
+        {"msg" : "Success!",
+         "Userdata" : data,
+         "Applicationdata" : "",
+         "RegData" : "",
+         "status" : "Ok"
+
+
+       });
   
 
 
