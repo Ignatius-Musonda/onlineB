@@ -69,7 +69,7 @@ app.listen(8800, () => {
 //       console.log(err);
 //       return res.json(err);
 //     }
-//     // console.log("here",data)
+//     console.log("here",data)
 //     return res.json(data);
 //   });
 // });

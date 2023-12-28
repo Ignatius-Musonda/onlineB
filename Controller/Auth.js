@@ -30,7 +30,7 @@ export const register = (req, res) => {
         // })
 
         const insertQuery = "INSERT INTO student(`StudentID`,`email`,`Gender`,`Date`,`DOB`,`NRC`,`Nationality`,`FName`,`LName`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        const insertUserQuery = "INSERT INTO user(`UserID`,`Date`,`NRC`,`Password`,`Jwt`,`Email`) VALUES (?, ?, ?, ?, ?,?)";
+        const insertUserQuery = "INSERT INTO user(`UserID`,`Date`,`NRC`,`Password`,`Jwt`,`Email`,`Role`) VALUES (?, ?, ?, ?, ?,?,?)";
         
 
                     // CHECKING FOR NEXT STUDENT NUMBER
@@ -106,6 +106,7 @@ export const register = (req, res) => {
                 hash,
                 "Jwt sample",
                 req.body.email,
+                "Student"
             ];
 
             const values = [ 
