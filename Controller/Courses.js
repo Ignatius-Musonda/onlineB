@@ -28,27 +28,55 @@ export const getCourse = (req, res) => {
 };
 
 export const addCourse = (req, res) => {
-  const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated!");
+//   const token = req.cookies.access_token;
+//   if (!token) return res.status(401).json("Not authenticated!");
 
 //   jwt.verify(token, "jwtkey", (err, userInfo) => {
 //     if (err) return res.status(403).json("Token is not valid!");
 
-    const q =
-      "INSERT INTO applicants (`User_ID`, `NRC`, `FirstName`, `LastName`, `LastName`,`Email`,`CreationDate`,`IntakeID`,`Status`) VALUES (?,?,?,?,?,?,?,?)";
+    // const q =
+    //   "INSERT INTO applicants (`User_ID`, `NRC`, `FirstName`, `LastName`, `LastName`,`Email`,`CreationDate`,`IntakeID`,`Status`) VALUES (?,?,?,?,?,?,?,?,?)";
 
-    const values = [
-      req.body.title,
-      req.body.desc,
-      req.body.img,
-      req.body.cat,
-      req.body.date,
-      userInfo.id,
-      userInfo.id,
-      userInfo.id,
-    ];
+    // const values = [
+    //   req.body.Branch,
+    //   req.body.Branch,
+    //   req.body.Branch,
+    //   req.body.Branch,
+    //   req.body.Branch,
+    //   req.body.Branch,
+    //   req.body.Branch,
+    //   new Date(),
+    //   req.body.Branch,
+      
+    // ];
 
-    db.query(q, [values], (err, data) => {
+    // db.query(q, [values], (err, data) => {
+        const q =
+        "INSERT INTO applicants (`User_ID`, `NRC`, `FirstName`, `LastName`, `Email`, `CreationDate`, `IntakeID`, `Status`) VALUES (?,?,?,?,?,?,?,?)";
+      
+      const values = [
+        req.body.Branch,
+        req.body.Branch,
+        req.body.Branch,
+        req.body.Branch,
+        req.body.Branch,
+        new Date(),
+        req.body.Branch,
+        req.body.Branch,
+        // req.body.User_ID,
+        // req.body.NRC,
+        // req.body.FirstName,
+        // req.body.LastName,
+        // req.body.Email,
+        // new Date(),
+        // req.body.IntakeID,
+        // req.body.Status,
+      ];
+      
+      db.query(q, values, (err, data) => {
+        // Your callback logic here
+      
+      
       if (err) return res.status(500).json(err);
       return res.json("Post has been created.");
     });
