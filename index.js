@@ -8,6 +8,7 @@ import path from "path";
 // import authRoutes from "./routes/auth.js";
 import authRoutes from "./Routes/Auth.js";
 import CourseRoutes from "./Routes/Courses.js";
+import Application from "./Routes/Application.js";
 import userRoutes from "./Routes/User.js"
 import cookieParser from "cookie-parser";
 
@@ -27,6 +28,7 @@ const db = mysql.createConnection({
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/courses", CourseRoutes);
+app.use("/api/Application", Application);
 
 
 

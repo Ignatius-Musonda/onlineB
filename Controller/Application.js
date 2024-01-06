@@ -1,9 +1,12 @@
 
+
+
+
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
 
-export const getCourses = (req, res) => {
-  const q = "SELECT * FROM course";
+export const getApplications = (req, res) => {
+  const q = "SELECT * FROM applicants";
 //   const q = req.query.cat
 //     ? "SELECT * FROM course WHERE cat=?"
 //     : "SELECT * FROM course";
@@ -11,12 +14,13 @@ export const getCourses = (req, res) => {
   db.query(q, (err, data) => {
 //   db.query(q, [req.query.cat], (err, data) => {
     if (err) return res.status(500).send(err);
-
+    
+    console.log("data",data)
     return res.status(200).json(data);
   });
 };
 
-export const getCourse = (req, res) => {
+export const getApplication = (req, res) => {
   const q =
     "SELECT p.id, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
 
@@ -27,7 +31,7 @@ export const getCourse = (req, res) => {
   });
 };
 
-export const addCourse = (req, res) => {
+export const addApplication = (req, res) => {
 //   const token = req.cookies.access_token;
 //   if (!token) return res.status(401).json("Not authenticated!");
 
@@ -87,7 +91,7 @@ export const addCourse = (req, res) => {
 //   });
 };
 
-export const deleteCourse = (req, res) => {
+export const deleteApplication = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
@@ -105,7 +109,7 @@ export const deleteCourse = (req, res) => {
   });
 };
 
-export const updateCourse = (req, res) => {
+export const updateApplication = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
